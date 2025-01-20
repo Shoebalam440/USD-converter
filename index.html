@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USD to INR Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg'),
+                        url('https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg');
+            background-size: cover;
+            background-position: left, right;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>USD to INR Converter</h1>
+        <p>Enter the amount in USD to convert it to INR.</p>
+        <form id="converter-form">
+            <div class="mb-3">
+                <label for="usdValue" class="form-label">Amount in USD:</label>
+                <input type="number" id="usdValue" class="form-control" placeholder="Enter USD amount" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Convert</button>
+        </form>
+        <div id="result" class="mt-4" style="font-size: 1.5rem;"></div>
+    </div>
+
+    <script>
+        document.getElementById('converter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const usdValue = parseFloat(document.getElementById('usdValue').value);
+
+            if (isNaN(usdValue) || usdValue <= 0) {
+                alert('Please enter a valid positive number');
+                return;
+            }
+
+            const inrValue = usdValue * 83;
+            document.getElementById('result').textContent = `${usdValue} USD = ${inrValue.toFixed(2)} INR`;
+        });
+    </script>
+</body>
+</html>
